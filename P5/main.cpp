@@ -213,8 +213,6 @@ int main(int argc, char **argv) {
 
 // enter GLUT's main cycle
 	glutMainLoop();
-	time_t t;
-	srand((unsigned) time(&t));
 	
 	return 1;
 }

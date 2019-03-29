@@ -9,19 +9,15 @@
 
 #define _USE_MATH_DEFINES
 #include <math.h>
-#define SIDES 10
 
 float alfa = 0.0f, beta = 0.0f, radius = 5.0f;
 float camX, camY, camZ;
 
-int time;
-int frame;
-float fps;
-int timebase;
+GLuint buffer[1];
+GLfloat * vertices;
+GLint numVertex;
+GLint sides = 5;
 
-GLuint buffers[1];
-float * vertex;
-int size = 0;
 
 void spherical2Cartesian() {
 
@@ -111,53 +107,76 @@ void cylinder0(float radius, float height, int sides) {
 
 void cylinder(float radius, float height, int sides) {
 
-	vertex = static_cast<float *>(malloc(sizeof(GL_FLOAT * size)));
 	int i;
 	float step;
+	int n = 0;
 
 	step = 360.0 / sides;
 
-	glBegin(GL_TRIANGLES);
-	int j = 0;
 	// top
 	for (i = 0; i < sides; i++) {
-		vertex[j++] = 0;
-		vertex[j++] = height*0.5;
-		vertex[j++] = 0;
-		vertex[j++] = cos(i * step * M_PI / 180.0)*radius;
-		vertex[j++] = height*0.5;
-		vertex[j++] = -sin(i * step *M_PI / 180.0)*radius;
-		vertex[j++] = cos((i+1) * step * M_PI / 180.0)*radius;
-		vertex[j++] = height*0.5;
-		vertex[j++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
+		vertices[n++] = 0;
+		vertices[n++] = height * 0.5f;
+		vertices[n++] = 0;
+
+		vertices[n++] = cos(i * step * M_PI / 180.0)*radius;
+		vertices[n++] = height * 0.5f;
+		vertices[n++] = -sin(i * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos((i+1) * step * M_PI / 180.0)*radius;
+		vertices[n++] = height * 0.5f;
+		vertices[n++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
 	}
 
 	// bottom
 	for (i = 0; i < sides; i++) {
-		glVertex3f(0, -height*0.5, 0);
-		glVertex3f(cos((i + 1) * step * M_PI / 180.0)*radius, -height*0.5, -sin((i + 1) * step *M_PI / 180.0)*radius);
-		glVertex3f(cos(i * step * M_PI / 180.0)*radius, -height*0.5, -sin(i * step *M_PI / 180.0)*radius);
+		vertices[n++] = 0;
+		vertices[n++] = - height * 0.5f;
+		vertices[n++] = 0;
+
+		vertices[n++] = cos((i + 1) * step * M_PI / 180.0)*radius;
+		vertices[n++] = -height*0.5f;
+		vertices[n++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos(i * step * M_PI / 180.0)*radius;
+		vertices[n++] = -height*0.5;
+		vertices[n++] = -sin(i * step *M_PI / 180.0)*radius;
 	}
 
 	// body
 	for (i = 0; i <= sides; i++) {
 
-		glVertex3f(cos(i * step * M_PI / 180.0)*radius, height*0.5, -sin(i * step *M_PI / 180.0)*radius);
-		glVertex3f(cos(i * step * M_PI / 180.0)*radius, -height*0.5, -sin(i * step *M_PI / 180.0)*radius);
-		glVertex3f(cos((i + 1) * step * M_PI / 180.0)*radius, height*0.5, -sin((i + 1) * step *M_PI / 180.0)*radius);
+		vertices[n++] = cos(i * step * M_PI / 180.0)*radius;
+		vertices[n++] = height*0.5;
+		vertices[n++] = -sin(i * step *M_PI / 180.0)*radius;
 
-		glVertex3f(cos(i * step * M_PI / 180.0)*radius, -height*0.5, -sin(i * step *M_PI / 180.0)*radius);
-		glVertex3f(cos((i + 1) * step * M_PI / 180.0)*radius, -height*0.5, -sin((i + 1) * step *M_PI / 180.0)*radius);
-		glVertex3f(cos((i + 1) * step * M_PI / 180.0)*radius, height*0.5, -sin((i + 1) * step *M_PI / 180.0)*radius);
+		vertices[n++] = cos(i * step * M_PI / 180.0)*radius;
+		vertices[n++] = -height*0.5;
+		vertices[n++] = -sin(i * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos((i + 1) * step * M_PI / 180.0)*radius;
+		vertices[n++] = height*0.5;
+		vertices[n++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos(i * step * M_PI / 180.0)*radius;
+		vertices[n++] = -height*0.5;
+		vertices[n++] = -sin(i * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos((i + 1) * step * M_PI / 180.0)*radius;
+		vertices[n++] = -height*0.5;
+		vertices[n++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
+
+		vertices[n++] = cos((i + 1) * step * M_PI / 180.0)*radius;
+		vertices[n++] = height*0.5;
+		vertices[n++] = -sin((i + 1) * step *M_PI / 180.0)*radius;
 	}
-	glEnd();
 }
 
 
 void renderScene(void) {
 
 	// clear buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// set the camera
 	glLoadIdentity();
@@ -165,36 +184,15 @@ void renderScene(void) {
 		0.0, 0.0, 0.0,
 		0.0f, 1.0f, 0.0f);
 
-	glBufferData(GL_ARRAY_BUFFER,size,vertex,GL_STATIC_DRAW);
-	glDrawArrays(GL_TRIANGLES,0,size);
-
-  	//cylinder(1,2,10);
-  	frame++;
-	time = glutGet(GLUT_ELAPSED_TIME);
-	if (time - timebase > 1000) {
-		fps = frame*1000.0 / (time-timebase);
-		timebase = time;
-		frame = 0;
-	}
-	char title[512];
-	sprintf(title,"FPS: %f",fps);
-	glutSetWindowTitle(title);
-
+	glBindBuffer(GL_ARRAY_BUFFER,buffer[0]);
+	glVertexPointer(3,GL_FLOAT,0,0);
+	glDrawArrays(GL_TRIANGLES,0,numVertex);
+	//cylinder0(1,2,10);
 
 	// End of frame
 	glutSwapBuffers();
 }
 
-void idle(void) {
-	frame++;
-	time = glutGet(GLUT_ELAPSED_TIME);
-	if (time - timebase > 1000) {
-		fps = frame*1000.0 / (time-timebase);
-		timebase = time;
-		frame = 0;
-	}
-	glutPostRedisplay();
-}
 
 void processKeys(unsigned char c, int xx, int yy) {
 
@@ -248,6 +246,17 @@ void printInfo() {
 	printf("Home and End control the distance from the camera to the origin");
 }
 
+void initVBO() {
+	glGenBuffers(1,buffer);
+	glBindBuffer(GL_ARRAY_BUFFER,buffer[0]);
+	glBufferData(GL_ARRAY_BUFFER,numVertex*3*sizeof(GLfloat),vertices,GL_STATIC_DRAW);
+}
+
+void fillVertexArray() {
+	numVertex = sides*3 + sides*6 + sides*3;
+	vertices = new GLfloat[numVertex*3];
+	cylinder(3,5,sides);
+}
 
 int main(int argc, char **argv) {
 
@@ -261,7 +270,6 @@ int main(int argc, char **argv) {
 // Required callback registry 
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);
-	glutIdleFunc(idle);
 	
 // Callback registration for keyboard processing
 	glutKeyboardFunc(processKeys);
@@ -276,16 +284,11 @@ int main(int argc, char **argv) {
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_LINE);
 
-	spherical2Cartesian();
-	size = SIDES*3 + SIDES*6 + SIDES*3;
-	cylinder(1,2,SIDES);
-    time = glutGet(GLUT_ELAPSED_TIME);
-    timebase = time;
+	fillVertexArray();
+	glEnableClientState(GL_VERTEX_ARRAY);
+	initVBO();
 
-    glEnableClientState(GL_VERTEX_ARRAY);
-	glGenBuffers(1,buffers);
-	glBindBuffer(GL_ARRAY_BUFFER,buffers[0]);
-	glVertexPointer(3,GL_FLOAT,0,0);
+	spherical2Cartesian();
 
 	printInfo();
 
