@@ -72,7 +72,7 @@ void changeSize(int w, int h) {
 
 float h(int i, int j) {
 	float height = imageData[th*i+j];
-	return height/5;
+	return height;
 }
 
 float hf(float x, float z) {
@@ -107,11 +107,11 @@ void buildGrid() {
 		for(int j = 0; j < tw; j++) {
 			// a
 			vertexBuffer[index++] = minX + j*1.0f; // x
-			vertexBuffer[index++] = h(i,j);
+			vertexBuffer[index++] = h(j,i);
 			vertexBuffer[index++] = minZ + i*1.0f; // z
 			// b
 			vertexBuffer[index++] = minX + j*1.0f; // x
-			vertexBuffer[index++] = h(i,j);
+			vertexBuffer[index++] = h(j,i+1);
 			vertexBuffer[index++] = minZ + (i + 1)*1.0f; // z + 1
 		}
 	}
@@ -252,8 +252,8 @@ void renderScene(void) {
 
 	glLoadIdentity();
 	float py = height + hf(x,z);
-	gluLookAt(camX, py, camZ,
-		      camX + sin(alpha),py,camZ+cos(alpha),
+	gluLookAt(camX, camY, camZ,
+		      0,0,0,
 			  0.0f,1.0f,0.0f);
 
 	drawScene();
