@@ -72,12 +72,14 @@ void changeSize(int w, int h) {
 
 float h(int i, int j) {
 	float height = imageData[th*i+j];
-	return height;
+	return height/5;
 }
 
 float hf(float x, float z) {
-	x = x + tw/2;
-	z = z + th/2;
+	float baseX = tw / 2.0f;
+	float baseZ = th / 2.0f;
+	x += baseX;
+	z += baseZ;
 	int x1 = floor(x);
 	int z1 = floor(z);
 	int x2 = x1 + 1;
@@ -96,8 +98,8 @@ float hf(float x, float z) {
 
 void buildGrid() {
 
-	int minX = - (tw / 2);
-	int minZ = - (th / 2);
+	int minX = 0;
+	int minZ = 0;
 	int index = 0;
 	int numOfPoints = tw * 3 * 2 * (th-1);
 	float * vertexBuffer = (float *) (malloc(sizeof(float) * numOfPoints));
@@ -120,11 +122,16 @@ void buildGrid() {
 
 void drawPlane() {
 
+	glPushMatrix();
 	glBindBuffer(GL_ARRAY_BUFFER, buffer[0]);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
 	glColor3f(0.5f, 0.5f, 0.2f);
+	float moveX = tw / 2.0f;
+	float moveZ = th / 2.0f;
+	glTranslatef(-moveX,0,-moveZ);
 	for(int i = 0; i < th-1; i++)
 		glDrawArrays(GL_TRIANGLE_STRIP, i*tw*2, 2*tw);
+	glPopMatrix();
 
 	/*glColor3f(0.2f,0.8f,0.2f);
 	glBegin(GL_QUADS);
@@ -244,8 +251,9 @@ void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(camX, camY, camZ, 
-		      0.0,0.0,0.0,
+	float py = height + hf(x,z);
+	gluLookAt(camX, py, camZ,
+		      camX + sin(alpha),py,camZ+cos(alpha),
 			  0.0f,1.0f,0.0f);
 
 	drawScene();
