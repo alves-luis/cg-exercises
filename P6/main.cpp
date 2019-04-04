@@ -252,8 +252,8 @@ void renderScene(void) {
 
 	glLoadIdentity();
 	float py = height + hf(x,z);
-	gluLookAt(camX, camY, camZ,
-		      0,0,0,
+	gluLookAt(x, py, z,
+		      x + sin(alpha),py,z + cos(alpha),
 			  0.0f,1.0f,0.0f);
 
 	drawScene();
@@ -268,6 +268,34 @@ void renderScene(void) {
 void processKeys(unsigned char key, int xx, int yy) {
 
 // put code to process regular keys in here
+	float d[3];
+	d[0] = sin(alpha);
+	d[1] = 0;
+	d[2] = cos(alpha);
+	switch (key) {
+		case 'w':	x += d[0];
+					z += d[2];
+					break;
+		case 's':	x -= d[0];
+					z -= d[2];
+					break;
+		case 'a':	float r[3];
+					r[0] = d[1]*0 - d[2]*1;
+					r[1] = 0;
+					r[2] = d[0]*1;
+					x -= r[0];
+					z -= r[2];
+					break;
+		case 'd':	float rr[3];
+					rr[0] = d[1]*0 - d[2]*1;
+					rr[1] = 0;
+					rr[2] = d[0]*1;
+					x += rr[0];
+					z += rr[2];
+					break;
+	}
+
+	glutPostRedisplay();
 }
 
 
