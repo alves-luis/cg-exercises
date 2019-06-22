@@ -92,24 +92,33 @@ void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// set the camera
+	float p[4] = {0.0f, 1.0f, 0.0f, 1.0f};
+
 	glLoadIdentity();
-	gluLookAt(5.0,5.0,5.0, 
+	glPushMatrix();
+	glTranslatef(0.0f,0.0f,-1.0f);
+	glColor3f(1,0,0);
+	glutWireSphere(0.1,10,10);
+	glPopMatrix();
+	gluLookAt(10.0,0.0,5.0,
 		      0.0,0.0,0.0,
 			  0.0f,1.0f,0.0f);
 
-// put the geometric transformations here
-  glRotatef(rotation->x,1,0,0);
-  glRotatef(rotation->y,0,1,0);
-  glRotatef(rotation->z,0,0,1);
-  glTranslatef(translation->x,translation->y,translation->z);
-  glScalef(1,scaling,1);
+	glPushMatrix();
+	glTranslatef(p[0],p[1],p[2]);
+	glColor3f(0,1,0);
+	glutWireSphere(1,10,10);
+	glPopMatrix();
 
+// put the geometric transformations here
+/*
 // put drawing instructions here
-  drawPyramid();
+  drawPyramid();*/
 
 
 	// End of frame
 	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 

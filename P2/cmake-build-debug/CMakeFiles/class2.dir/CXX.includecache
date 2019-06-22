@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/alvesluis/Documents/CG/P2/main.cpp
+/home/alvesluis/Documents/CG/PL/P2/main.cpp
 GLUT/glut.h
 -
 GL/glut.h

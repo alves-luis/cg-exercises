@@ -12,8 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a03d994-43fa-4ed9-a756-bc9ad6063268" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../P4/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../P4/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../P5/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../P5/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/class6.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/class6.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/class6" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/class6" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +29,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="173" column="33" selection-start-line="173" selection-start-column="33" selection-end-line="173" selection-end-column="33" />
+            <state relative-caret-position="921">
+              <caret line="133" column="18" lean-forward="true" selection-start-line="133" selection-start-column="18" selection-end-line="133" selection-end-column="18" />
               <folding>
                 <element signature="e#2#19#0" expanded="true" />
                 <element signature="e#66#83#0" expanded="true" />
+                <element signature="e#140#162#0" expanded="true" />
                 <element signature="e#169#189#0" expanded="true" />
               </folding>
             </state>
@@ -53,6 +55,16 @@
       <find>glDraw</find>
       <find>tree</find>
       <find>(th / 2);</find>
+      <find>RAND_MAX</find>
+      <find>RAND</find>
+      <find>gluLookAt</find>
+      <find>h</find>
+      <find>lookAt</find>
+      <find>processKeys</find>
+      <find>processMouse</find>
+      <find>glutPostRedisplay();</find>
+      <find>hf</find>
+      <find>bind</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -65,9 +77,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="30" />
-    <option name="width" value="683" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="683" />
+    <option name="y" value="77" />
+    <option name="width" value="653" />
     <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -76,7 +89,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -88,6 +100,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -127,16 +140,28 @@
       <updated>1553166415683</updated>
       <workItem from="1553166417087" duration="6079000" />
       <workItem from="1553771229709" duration="6418000" />
+      <workItem from="1554303449660" duration="24000" />
+      <workItem from="1554303495269" duration="1823000" />
+      <workItem from="1554372890012" duration="156000" />
+      <workItem from="1554376261099" duration="1957000" />
+      <workItem from="1554378257786" duration="320000" />
+      <workItem from="1554459540455" duration="21000" />
+      <workItem from="1554819574534" duration="3000" />
+      <workItem from="1554977052112" duration="542000" />
+      <workItem from="1555262516519" duration="17000" />
+      <workItem from="1555263281858" duration="6000" />
+      <workItem from="1557326615220" duration="951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12497000" />
+    <option name="totallyTimeSpent" value="18317000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1366" height="738" extended-state="6" />
+    <frame x="683" y="77" width="653" height="738" extended-state="4" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.068939395" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2125206" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -151,7 +176,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="CMake" order="12" weight="0.32840723" />
+      <window_info active="true" anchor="bottom" id="CMake" order="12" visible="true" weight="0.32840723" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -162,13 +187,17 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="173" column="33" selection-start-line="173" selection-start-column="33" selection-end-line="173" selection-end-column="33" />
+        <state relative-caret-position="921">
+          <caret line="133" column="18" lean-forward="true" selection-start-line="133" selection-start-column="18" selection-end-line="133" selection-end-column="18" />
           <folding>
             <element signature="e#2#19#0" expanded="true" />
             <element signature="e#66#83#0" expanded="true" />
+            <element signature="e#140#162#0" expanded="true" />
             <element signature="e#169#189#0" expanded="true" />
           </folding>
         </state>

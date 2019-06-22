@@ -1,6 +1,6 @@
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/alvesluis/Documents/CG/P2
--- The C compiler identification is GNU 7.3.0
--- The CXX compiler identification is GNU 7.3.0
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/alvesluis/Documents/CG/PL/P2
+-- The C compiler identification is GNU 7.4.0
+-- The CXX compiler identification is GNU 7.4.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info
@@ -37,4 +37,4 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Found GLUT: /usr/lib/x86_64-linux-gnu/libglut.so  
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/alvesluis/Documents/CG/P2/cmake-build-debug
+-- Build files have been written to: /home/alvesluis/Documents/CG/PL/P2/cmake-build-debug
