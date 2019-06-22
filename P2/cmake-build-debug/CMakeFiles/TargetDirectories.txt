@@ -1,3 +1,0 @@
-/home/alvesluis/Documents/CG/PL/P2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/alvesluis/Documents/CG/PL/P2/cmake-build-debug/CMakeFiles/class2.dir
-/home/alvesluis/Documents/CG/PL/P2/cmake-build-debug/CMakeFiles/edit_cache.dir
